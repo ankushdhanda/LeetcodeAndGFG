@@ -1,0 +1,34 @@
+struct Node {
+    int data;
+    struct Node *next;
+    Node(int x) {
+        data = x;
+        next = NULL;
+    }
+};
+
+*/
+
+
+class Solution
+{
+    public:
+    //Function to rotate a linked list.
+    Node* rotate(Node* head, int k)
+    {
+        Node *curr=head;
+        while(curr->next!=NULL)
+        curr=curr->next;
+        Node *last=curr;
+        curr=head;
+        for(int i=0;i<k;i++){
+            Node *next=curr->next;
+            Node *temp=last->next;
+            last->next=curr;
+            last=curr;
+            curr->next=temp;
+            curr=next;
+        }
+        return curr;
+    }
+};
