@@ -1,0 +1,31 @@
+USING VECTOR DATA STRUCTURE (Can be done using Set)
+
+
+class Solution{
+  public:
+    // arr[] : the input array
+    // N : size of the array arr[]
+    
+    //Function to return length of longest subsequence of consecutive integers.
+    int findLongestConseqSubseq(int arr[], int N)
+    {
+        int n=10e5+1;
+        vector<int>vec(n,0);
+        for(int i=0;i<N;i++){
+            vec[arr[i]]=1;
+        }
+        int curr=0;
+        int maxi=1;
+        for(int i=0;i<n;i++){
+            if(vec[i]==1){
+                curr++;
+                maxi=max(curr,maxi);
+            }
+            else{
+                curr=0;
+            }
+        }
+        return maxi;
+    }
+};
+
